@@ -25,7 +25,7 @@ export default function EventCard({
           {startDate} - {endDate}
         </Subtle>
         <H3 className="mb-2">{name}</H3>
-        <p className="line-clamp-2 mb-2">{description}</p>
+        <p className="line-clamp-3 mb-3">{description}</p>
         <Subtle>by: {owner}</Subtle>
       </div>
     </Link>

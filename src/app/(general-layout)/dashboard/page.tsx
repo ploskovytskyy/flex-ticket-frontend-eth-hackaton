@@ -12,7 +12,7 @@ export default function Page() {
   const chainBadge = chain?.name ?? chain?.id;
   return (
     <main className="container py-10">
-      <H1 className="flex items-center gap-5 mt-5 mb-10">
+      <H1 className="flex items-center gap-5 mt-4 mb-10">
         My events
         <Badge variant="secondary">{chainBadge}</Badge>
       </H1>
@@ -34,7 +34,7 @@ export default function Page() {
         <AddItem />
       </div>
       <hr className="my-10" />
-      <H1 className="flex items-center gap-5 mt-5 mb-10">
+      <H1 className="flex items-center gap-5 mt-4 mb-10">
         My tickets
         <Badge variant="secondary">{chainBadge}</Badge>
       </H1>

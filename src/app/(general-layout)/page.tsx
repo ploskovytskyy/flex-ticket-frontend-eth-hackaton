@@ -11,8 +11,8 @@ export default function Home() {
   const chainBadge = chain?.name ?? chain?.id;
   return (
     <main className="container py-10">
-      <H1 className="flex items-center gap-5 mt-5 mb-10">
-        <Search className="w-10 h-10" />
+      <H1 className="flex items-center gap-3 mt-4 mb-10">
+        <Search className="w-8 h-8" />
         Explore Events
         <Badge variant="secondary">{chainBadge}</Badge>
       </H1>

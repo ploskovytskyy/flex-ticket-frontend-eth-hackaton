@@ -1,6 +1,6 @@
 import { ExternalLink, Pen } from "lucide-react";
 import Link from "next/link";
-import { H3, Subtle } from "~/components/typography";
+import { H3, Small, Subtle } from "~/components/typography";
 import { Button } from "~/components/ui/button";
 
 type Props = {
@@ -24,17 +24,19 @@ export default function MyEventCard({
         {startDate} - {endDate}
       </Subtle>
       <H3 className="mb-2">{name}</H3>
-      <p className="line-clamp-2 mb-4">{description}</p>
-      <Link href={`/events/${id}`} className="grid mb-2">
-        <Button variant="secondary" className="flex gap-2">
-          <ExternalLink className="w-4" />
-          Open
+      <p className="line-clamp-3 mb-4">{description}</p>
+      <div className="grid grid-cols-2 gap-2">
+        <Link href={`/events/${id}`} className="grid">
+          <Button variant="secondary" className="flex gap-2">
+            <ExternalLink className="w-4" />
+            Open
+          </Button>
+        </Link>
+        <Button className="flex gap-2">
+          <Pen className="w-4" />
+          Edit
         </Button>
-      </Link>
-      <Button className="flex gap-2">
-        <Pen className="w-4" />
-        Edit
-      </Button>
+      </div>
     </div>
   );
 }
