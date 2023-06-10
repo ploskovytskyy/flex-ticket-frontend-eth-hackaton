@@ -20,8 +20,8 @@ export default function EventCard({
 }: Props) {
   return (
     <Link href={`/events/${id}`}>
-      <div className="grid border rounded-lg px-4 py-5 hover:border-slate-300 cursor-pointer">
-        <Subtle>
+      <div className="grid border rounded-lg px-4 py-5 hover:border-slate-300 hover:shadow-lg cursor-pointer transition-all">
+        <Subtle className="mb-1">
           {startDate} - {endDate}
         </Subtle>
         <H3 className="mb-2">{name}</H3>

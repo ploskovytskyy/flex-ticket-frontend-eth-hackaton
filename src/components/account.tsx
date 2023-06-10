@@ -1,5 +1,6 @@
 "use client";
 
+import { User } from "lucide-react";
 import { useAccount, useEnsName } from "wagmi";
 
 function shortenAddress(address: string) {
@@ -21,9 +22,10 @@ export function Account() {
   const { data: ensName } = useEnsName({ address });
 
   return (
-    <>
+    <div className="flex gap-2 items-center">
+      <User className="w-5" />
       {ensName ?? shortenAddress(address || "")}
       {ensName ? ` (${shortenAddress(address || "")})` : null}
-    </>
+    </div>
   );
 }

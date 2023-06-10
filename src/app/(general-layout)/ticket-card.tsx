@@ -23,7 +23,7 @@ type Props = {
 export default function TicketCard({ id }: Props) {
   const { isConnected } = useAccount();
   return (
-    <div className="grid border rounded-lg px-4 py-5">
+    <div className="grid border rounded-lg px-4 py-5 hover:shadow-lg transition-all">
       <H3 className="mb-3 flex items-center justify-between">
         Full Ticket
         <Badge variant="secondary">Hacker</Badge>

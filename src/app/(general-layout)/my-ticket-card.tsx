@@ -16,7 +16,7 @@ type Props = {
 export default function MyTicketCard({ id }: Props) {
   const { isConnected } = useAccount();
   return (
-    <div className="grid border rounded-lg px-4 py-5">
+    <div className="grid border rounded-lg px-4 py-5 hover:shadow-lg transition-all">
       <Subtle className="mb-2">10 Jun 2023 - 13 Jun 2023</Subtle>
       <H3 className="mb-2 flex items-center justify-between">
         Full Ticket

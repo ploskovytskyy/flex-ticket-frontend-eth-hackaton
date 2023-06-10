@@ -19,7 +19,7 @@ export default function MyEventCard({
   endDate,
 }: Props) {
   return (
-    <div className="grid border rounded-lg px-4 py-5 hover:border-slate-300 cursor-pointer">
+    <div className="grid border rounded-lg px-4 py-5 hover:border-slate-300 hover:shadow-lg transition-all">
       <Subtle>
         {startDate} - {endDate}
       </Subtle>
