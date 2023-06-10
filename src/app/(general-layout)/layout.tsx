@@ -1,6 +1,8 @@
 import Link from "next/link";
 import HeaderAccount from "./account";
 import { Button } from "~/components/ui/button";
+import Image from "next/image";
+import logo from "../flex-ticket-logo.svg";
 
 export default function Layout({ children }: PropsWithChildren) {
   return (
@@ -8,8 +10,8 @@ export default function Layout({ children }: PropsWithChildren) {
       <header className="py-4 border-b">
         <div className="flex items-center justify-between container">
           <div className="flex items-center gap-20">
-            <Link href="/" className="">
-              <span className="font-black text-xl">Flex Ticket</span>
+            <Link href="/">
+              <Image alt="Flex Ticket" src={logo} width={140} />
             </Link>
           </div>
           <div className="flex items-center">

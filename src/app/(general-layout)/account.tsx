@@ -26,7 +26,7 @@ export default function HeaderAccount() {
           <ChevronDown className="ml-2 w-4" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent>
+      <PopoverContent className="mx-5">
         <div className="mb-2">
           Connected to <strong>{chain?.name ?? chain?.id}</strong>
           {chain?.unsupported && " (unsupported)"}

@@ -1,4 +1,5 @@
-import { Pen } from "lucide-react";
+import { ExternalLink, Pen } from "lucide-react";
+import Link from "next/link";
 import { H3, Subtle } from "~/components/typography";
 import { Button } from "~/components/ui/button";
 
@@ -24,6 +25,12 @@ export default function MyEventCard({
       </Subtle>
       <H3 className="mb-2">{name}</H3>
       <p className="line-clamp-2 mb-4">{description}</p>
+      <Link href={`/events/${id}`} className="grid mb-2">
+        <Button variant="secondary" className="flex gap-2">
+          <ExternalLink className="w-4" />
+          Open
+        </Button>
+      </Link>
       <Button className="flex gap-2">
         <Pen className="w-4" />
         Edit

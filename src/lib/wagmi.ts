@@ -1,5 +1,5 @@
 import { configureChains, createConfig } from "wagmi";
-import { bsc, goerli, mainnet, polygon } from "wagmi/chains";
+import { goerli } from "wagmi/chains";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 
@@ -10,11 +10,9 @@ const walletConnectProjectId = "34728813447c5e117bf95089c4d87510";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
-    mainnet,
-    polygon,
-    bsc,
+    goerli,
     mantle,
-    ...(process.env.NODE_ENV === "development" ? [goerli] : []),
+    // ...(process.env.NODE_ENV === "development" ? [goerli] : []),
   ],
   [publicProvider()]
 );
