@@ -3,7 +3,7 @@
 import { User } from "lucide-react";
 import { useAccount, useEnsName } from "wagmi";
 
-function shortenAddress(address: string) {
+export function shortenAddress(address: string) {
   const prefixLength = 6; // Number of characters to keep at the beginning of the address
   const suffixLength = 4; // Number of characters to keep at the end of the address
   const ellipsis = "..."; // Ellipsis to indicate omitted characters

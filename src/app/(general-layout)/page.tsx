@@ -19,49 +19,9 @@ export default function Home() {
       <div className="grid grid-cols-4 gap-5">
         <EventCard
           id="sample-id"
-          name="Name"
+          name="Lorem ipsum dolor, sit amet consectetur"
           description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum est earum ex veritatis! Totam consequatur ab vitae minima nostrum veniam!"
-          owner="owner"
-          startDate="10 Jun 2023"
-          endDate="13 Jun 2023"
-        />
-        <EventCard
-          id="sample-id"
-          name="Name"
-          description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum est earum ex veritatis! Totam consequatur ab vitae minima nostrum veniam!"
-          owner="owner"
-          startDate="10 Jun 2023"
-          endDate="13 Jun 2023"
-        />
-        <EventCard
-          id="sample-id"
-          name="Name"
-          description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum est earum ex veritatis! Totam consequatur ab vitae minima nostrum veniam!"
-          owner="owner"
-          startDate="10 Jun 2023"
-          endDate="13 Jun 2023"
-        />
-        <EventCard
-          id="sample-id"
-          name="Name"
-          description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum est earum ex veritatis! Totam consequatur ab vitae minima nostrum veniam!"
-          owner="owner"
-          startDate="10 Jun 2023"
-          endDate="13 Jun 2023"
-        />
-        <EventCard
-          id="sample-id"
-          name="Name"
-          description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum est earum ex veritatis! Totam consequatur ab vitae minima nostrum veniam!"
-          owner="owner"
-          startDate="10 Jun 2023"
-          endDate="13 Jun 2023"
-        />
-        <EventCard
-          id="sample-id"
-          name="Name"
-          description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum est earum ex veritatis! Totam consequatur ab vitae minima nostrum veniam!"
-          owner="owner"
+          owner="0x239CaA02A475b78Ff90B32291757653eC4Ac6c3e"
           startDate="10 Jun 2023"
           endDate="13 Jun 2023"
         />
