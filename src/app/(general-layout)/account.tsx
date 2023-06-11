@@ -27,7 +27,7 @@ export default function HeaderAccount() {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="mx-5">
-        <div className="mb-2">
+        <div className="mb-3">
           Connected to <strong>{chain?.name ?? chain?.id}</strong>
           {chain?.unsupported && " (unsupported)"}
         </div>

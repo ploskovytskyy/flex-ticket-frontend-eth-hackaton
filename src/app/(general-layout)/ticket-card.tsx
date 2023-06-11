@@ -10,26 +10,42 @@ import { useAccount } from "wagmi";
 import { Connect } from "~/components/connect";
 
 type Props = {
-  id: string;
+  tier: {
+    _basePrice: bigint;
+    _baseURI: string;
+    _initialPrice: bigint;
+    _symbol: string;
+    _tierName: string;
+    _totalTickets: bigint;
+  };
+  index: number;
 };
 
-export default function TicketCard({ id }: Props) {
+export default function TicketCard({
+  tier: {
+    _basePrice,
+    _baseURI,
+    _initialPrice,
+    _symbol,
+    _tierName,
+    _totalTickets,
+  },
+  index,
+}: Props) {
   const { isConnected } = useAccount();
   return (
     <div className="grid border rounded-lg px-4 py-5 hover:shadow-lg transition-all">
-      <H3 className="mb-3 flex items-center justify-between">
-        Full Ticket
+      <H3 className="mb-1 flex items-center justify-between">
+        {_tierName}
         <Badge variant="secondary">{25 - 11} left</Badge>
       </H3>
-      <p className="line-clamp-3">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum est
-        earum ex veritatis! Totam consequatur ab vitae minima nostrum veniam!
-      </p>
       <hr className="my-3" />
-      <Small className="mb-2">Initial price: $23</Small>
-      <Small>Current price: $34.23</Small>
+      <Small className="mb-2">
+        Initial price: {BigInt(_initialPrice).toString()}
+      </Small>
+      <Small>Current price: 3.32</Small>
       <hr className="my-3" />
-      <Subtle className="mb-2">Price chart:</Subtle>
+      <Subtle className="mb-2">Price chart (fake data):</Subtle>
       <div className="grid bg-slate-50 py-2 rounded-lg mb-4">
         <ResponsiveContainer height={80}>
           <LineChart
@@ -41,7 +57,7 @@ export default function TicketCard({ id }: Props) {
           </LineChart>
         </ResponsiveContainer>
       </div>
-      {isConnected ? <Button>Mint for $34.23</Button> : <Connect />}
+      {isConnected ? <Button>Mint for 3.32</Button> : <Connect />}
     </div>
   );
 }

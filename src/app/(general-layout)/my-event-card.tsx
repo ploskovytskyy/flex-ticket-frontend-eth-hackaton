@@ -32,7 +32,7 @@ export default function MyEventCard({
             Open
           </Button>
         </Link>
-        <Button className="flex gap-2">
+        <Button disabled className="flex gap-2">
           <Pen className="w-4" />
           Edit
         </Button>

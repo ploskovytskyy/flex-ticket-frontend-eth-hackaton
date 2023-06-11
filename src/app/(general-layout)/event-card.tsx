@@ -1,7 +1,8 @@
+import { format } from "date-fns";
 import { User } from "lucide-react";
 import Link from "next/link";
 import { shortenAddress } from "~/components/account";
-import { Code, H3, H4, P, Subtle } from "~/components/typography";
+import { H4, Subtle } from "~/components/typography";
 
 import {
   Tooltip,
@@ -9,28 +10,29 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "~/components/ui/tooltip";
+import { bigIntToDate } from "~/lib/utils";
 
 type Props = {
-  id: string;
+  id: string | number;
   name: string;
-  description: string;
   owner: string;
-  startDate: string;
-  endDate: string;
+  startDate: bigint;
+  endDate: bigint;
 };
 
 export default function EventCard({
   id,
   name,
-  description,
   owner,
   startDate,
   endDate,
 }: Props) {
+  const start = bigIntToDate(startDate);
+  const end = bigIntToDate(endDate);
   return (
     <div className="grid border rounded-lg px-4 py-5 hover:border-slate-300 hover:shadow-lg transition-all">
       <Subtle className="mb-2">
-        {startDate} - {endDate}
+        {start} - {end}
       </Subtle>
       <Link href={`/events/${id}`} className="hover:underline">
         <H4 className="mb-4 line-clamp-2">{name}</H4>

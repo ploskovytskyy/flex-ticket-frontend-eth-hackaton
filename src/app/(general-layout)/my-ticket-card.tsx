@@ -14,20 +14,20 @@ type Props = {
 };
 
 export default function MyTicketCard({ id }: Props) {
-  const { isConnected } = useAccount();
+  // const { isConnected } = useAccount();
   return (
     <div className="grid border rounded-lg px-4 py-5 hover:shadow-lg transition-all">
       <Subtle className="mb-2">10 Jun 2023 - 13 Jun 2023</Subtle>
       <H3 className="mb-2 flex items-center justify-between">
         Full Ticket
-        <Badge variant="secondary">Hacker</Badge>
+        <Badge variant="secondary">Example</Badge>
       </H3>
       <p className="line-clamp-2">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum est
         earum ex veritatis! Totam consequatur ab vitae minima nostrum veniam!
       </p>
       <hr className="my-3" />
-      {isConnected ? <Button>Show QR Code</Button> : <Connect />}
+      id: 12345
     </div>
   );
 }

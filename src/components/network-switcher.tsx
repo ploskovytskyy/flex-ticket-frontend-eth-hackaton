@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "~/components/ui/dropdown-menu";
 import { Button } from "./ui/button";
+import { ArrowLeftRight } from "lucide-react";
 
 export function NetworkSwitcher() {
   const { chain } = useNetwork();
@@ -27,7 +28,8 @@ export function NetworkSwitcher() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="secondary" className="w-full">
-                Switch network
+                {isLoading ? "Switching" : "Switch network"}
+                <ArrowLeftRight className="ml-2 w-4" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56">
@@ -45,15 +47,6 @@ export function NetworkSwitcher() {
                 ))}
             </DropdownMenuContent>
           </DropdownMenu>
-          {/* Switch to:{" "}
-          {chains.map((x) =>
-            x.id === chain?.id ? null : (
-              <button key={x.id} onClick={() => switchNetwork(x.id)}>
-                {x.name}
-                {isLoading && x.id === pendingChainId && " (switching)"}
-              </button>
-            )
-          )} */}
         </div>
       ) : null}
     </>
