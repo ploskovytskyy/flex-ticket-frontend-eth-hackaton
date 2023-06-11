@@ -1,14 +1,15 @@
 import { ExternalLink, Pen } from "lucide-react";
 import Link from "next/link";
-import { H3, Small, Subtle } from "~/components/typography";
+import { H4, Subtle } from "~/components/typography";
 import { Button } from "~/components/ui/button";
+import { bigIntToDate } from "~/lib/utils";
 
 type Props = {
-  id: string;
+  id: string | number;
   name: string;
   description: string;
-  startDate: string;
-  endDate: string;
+  startDate: bigint;
+  endDate: bigint;
 };
 
 export default function MyEventCard({
@@ -20,22 +21,22 @@ export default function MyEventCard({
 }: Props) {
   return (
     <div className="grid border rounded-lg px-4 py-5 hover:border-slate-300 hover:shadow-lg transition-all">
-      <Subtle>
-        {startDate} - {endDate}
+      <Subtle className="mb-2">
+        {bigIntToDate(startDate)} - {bigIntToDate(endDate)}
       </Subtle>
-      <H3 className="mb-2">{name}</H3>
-      <p className="line-clamp-3 mb-4">{description}</p>
-      <div className="grid grid-cols-2 gap-2">
+      <H4 className="mb-2">{name}</H4>
+      <p className="line-clamp-2 mb-4">{description}</p>
+      <div className="grid gap-2">
         <Link href={`/events/${id}`} className="grid">
           <Button variant="secondary" className="flex gap-2">
             <ExternalLink className="w-4" />
-            Open
+            Open event page
           </Button>
         </Link>
-        <Button disabled className="flex gap-2">
+        {/* <Button disabled className="flex gap-2">
           <Pen className="w-4" />
           Edit
-        </Button>
+        </Button> */}
       </div>
     </div>
   );

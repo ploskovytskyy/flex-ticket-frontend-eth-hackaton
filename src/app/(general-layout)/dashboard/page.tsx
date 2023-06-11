@@ -27,20 +27,22 @@ export default function Page() {
           <ReadContract filterByAddress functionName="getAllEvents">
             {({ data }) => (
               <>
-                {data.map((event, index) => {
-                  return (
-                    <MyEventCard
-                      key={index}
-                      id="sample-id"
-                      name="Name"
-                      description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum est earum ex veritatis! Totam consequatur ab vitae minima nostrum veniam!"
-                      startDate="10 Jun 2023"
-                      endDate="13 Jun 2023"
-                    />
-                  );
-                })}
+                {data.map(
+                  ({ name, endDate, startDate, description }, index) => {
+                    return (
+                      <MyEventCard
+                        key={index}
+                        id={index}
+                        name={name}
+                        description={description}
+                        startDate={startDate}
+                        endDate={endDate}
+                      />
+                    );
+                  }
+                )}
                 <Link href="/events/create" className="min-h-[230px]">
-                  <AddItem />
+                  <AddItem label="Create event" />
                 </Link>
               </>
             )}

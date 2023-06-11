@@ -73,14 +73,17 @@ export default function ReadContract({
     );
   }
 
-  const filteredData = filterByAddress ? (data as any[]) : (data as any[]);
+  const filteredData = filterByAddress
+    ? (data as any[]).filter((event) => event.owner === address)
+    : (data as any[]);
 
   // console.log(filteredData);
 
   return (
     <div
       className={cn(
-        gridLayout && "grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
+        gridLayout &&
+          "grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 items-start"
       )}
     >
       {!!filteredData ? children({ data: filteredData as any[] }) : null}

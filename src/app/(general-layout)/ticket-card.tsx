@@ -9,7 +9,15 @@ import { Badge } from "~/components/ui/badge";
 import { useAccount } from "wagmi";
 import { Connect } from "~/components/connect";
 
+import { useContractWrite, useNetwork } from "wagmi";
+import { contracts } from "~/lib/contracts";
+import { abi } from "~/lib/abi";
+import { parseEther } from "viem";
+import { useToast } from "~/components/ui/use-toast";
+import { Loader2 } from "lucide-react";
+
 type Props = {
+  eventId: string | number;
   tier: {
     _basePrice: bigint;
     _baseURI: string;
@@ -22,6 +30,7 @@ type Props = {
 };
 
 export default function TicketCard({
+  eventId,
   tier: {
     _basePrice,
     _baseURI,
@@ -33,6 +42,36 @@ export default function TicketCard({
   index,
 }: Props) {
   const { isConnected } = useAccount();
+  const { toast } = useToast();
+  const { chain } = useNetwork();
+  const contractAddress = contracts[chain?.network || ""]?.address;
+
+  const { write, isLoading } = useContractWrite({
+    address: contractAddress,
+    abi: abi,
+    functionName: "buyTicket",
+    value: parseEther("0.001"),
+    args: [eventId, index],
+    onError(err) {
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong",
+        description: (
+          <p>
+            {(err as Error & { shortMessage: string })?.shortMessage ||
+              err?.message ||
+              "Unknown Error"}
+          </p>
+        ),
+      });
+    },
+    onSuccess() {
+      toast({
+        title: "Hooray! Your transaction has been executed",
+      });
+    },
+  });
+
   return (
     <div className="grid border rounded-lg px-4 py-5 hover:shadow-lg transition-all">
       <H3 className="mb-1 flex items-center justify-between">
@@ -40,10 +79,16 @@ export default function TicketCard({
         <Badge variant="secondary">{25 - 11} left</Badge>
       </H3>
       <hr className="my-3" />
-      <Small className="mb-2">
-        Initial price: {BigInt(_initialPrice).toString()}
-      </Small>
-      <Small>Current price: 3.32</Small>
+      <div className="flex gap-6">
+        <Small className="grid gap-1">
+          <Subtle>Initial price:</Subtle>
+          <span>{BigInt(_initialPrice).toString()}</span>
+        </Small>
+        <Small className="grid gap-1">
+          <Subtle>Current price:</Subtle>
+          <span>3.32</span>
+        </Small>
+      </div>
       <hr className="my-3" />
       <Subtle className="mb-2">Price chart (fake data):</Subtle>
       <div className="grid bg-slate-50 py-2 rounded-lg mb-4">
@@ -57,7 +102,20 @@ export default function TicketCard({
           </LineChart>
         </ResponsiveContainer>
       </div>
-      {isConnected ? <Button>Mint for 3.32</Button> : <Connect />}
+      {isConnected ? (
+        <Button onClick={() => write()} disabled={isLoading}>
+          {isLoading ? (
+            <>
+              <Loader2 className="w-4 animate-spin mr-2" />
+              Loading...
+            </>
+          ) : (
+            "Buy for 3.32"
+          )}
+        </Button>
+      ) : (
+        <Connect />
+      )}
     </div>
   );
 }

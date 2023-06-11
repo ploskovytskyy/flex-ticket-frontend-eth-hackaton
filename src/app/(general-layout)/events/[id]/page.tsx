@@ -57,7 +57,12 @@ export default function Page({
                     return (
                       <>
                         {data.map((tier, index) => (
-                          <TicketCard key={index} tier={tier} index={index} />
+                          <TicketCard
+                            key={index}
+                            tier={tier}
+                            eventId={params.id}
+                            index={index}
+                          />
                         ))}
                       </>
                     );
